@@ -18,4 +18,4 @@ class RPC:
             **scanner_params,
         }
         # log.info("Result: %s", result)
-        return "masscan", result
+        return "nikto", result
