@@ -12,14 +12,14 @@ const NiktoIntegration = {
                 is_default,
                 selected_integration: id,
                 nikto_parameters,
-                save_intermediates_to,
+                // save_intermediates_to,
             } = this
             return {
                 config,
                 is_default,
                 id,
                 nikto_parameters,
-                save_intermediates_to,
+                // save_intermediates_to,
             }
         },
     },
@@ -64,8 +64,8 @@ const NiktoIntegration = {
             config: {},
             error: {},
 
-            nikto_parameters: "",
-            save_intermediates_to: '/data/intermediates/dast',
+            nikto_parameters: "-nointeractive -ask no",
+            // save_intermediates_to: '/data/intermediates/dast',
         })
     },
     template: `
@@ -89,9 +89,9 @@ const NiktoIntegration = {
                         v-model="nikto_parameters"
                         :class="{ 'is-invalid': error.nikto_parameters }">
                 <div class="invalid-feedback">[[ error.nikto_parameters ]]</div>
-            
-                
-                <h9>Save intermediates to</h9>
+
+
+                <!--<h9>Save intermediates to</h9>
                 <p>
                     <h13>Optional</h13>
                 </p>
@@ -99,7 +99,7 @@ const NiktoIntegration = {
                     placeholder=""
                     v-model="save_intermediates_to"
                     :class="{ 'is-invalid': error.save_intermediates_to }">
-                <div class="invalid-feedback">[[ error.save_intermediates_to ]]</div>
+                <div class="invalid-feedback">[[ error.save_intermediates_to ]]</div>-->
             </div>
         </div>
     `
@@ -107,4 +107,3 @@ const NiktoIntegration = {
 
 
 register_component('scanner-nikto', NiktoIntegration)
-

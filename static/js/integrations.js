@@ -28,9 +28,9 @@ const NiktoIntegration = {
                         v-model="nikto_parameters"
                         :class="{ 'is-invalid': error.nikto_parameters }">
                 <div class="invalid-feedback">[[ error.nikto_parameters ]]</div>
-              
-                
-                <h9>Save intermediates to</h9>
+
+
+                <!--<h9>Save intermediates to</h9>
                 <p>
                     <h13>Optional</h13>
                 </p>
@@ -38,7 +38,7 @@ const NiktoIntegration = {
                        placeholder=""
                        v-model="save_intermediates_to"
                        :class="{ 'is-invalid': error.save_intermediates_to }">
-                <div class="invalid-feedback">[[ error.save_intermediates_to ]]</div>
+                <div class="invalid-feedback">[[ error.save_intermediates_to ]]</div>-->
             </div>
         </template>
         <template #footer>
@@ -72,7 +72,7 @@ const NiktoIntegration = {
                 is_default,
                 project_id,
                 nikto_parameters,
-                save_intermediates_to,
+                // save_intermediates_to,
                 status,
             } = this
             return {
@@ -80,7 +80,7 @@ const NiktoIntegration = {
                 is_default,
                 project_id,
                 nikto_parameters,
-                save_intermediates_to,
+                // save_intermediates_to,
                 status,
             }
         },
@@ -105,7 +105,7 @@ const NiktoIntegration = {
             })
         },
         handleEdit(data) {
-            console.debug('Masscan editIntegration', data)
+            console.debug('Nikto editIntegration', data)
             const {config, is_default, id, settings} = data
             this.load({...settings, config, is_default, id})
             this.modal.modal('show')
@@ -139,7 +139,7 @@ const NiktoIntegration = {
                 response.json().then(
                     errorData => {
                         errorData.forEach(item => {
-                            console.debug('Masscan item error', item)
+                            console.debug('Nikto item error', item)
                             this.error = {[item.loc[0]]: item.msg}
                         })
                     }
@@ -208,8 +208,8 @@ const NiktoIntegration = {
             test_connection_status: 0,
             id: null,
 
-            nikto_parameters: "",
-            save_intermediates_to: '/data/intermediates/dast',
+            nikto_parameters: "-nointeractive -ask no",
+            // save_intermediates_to: '/data/intermediates/dast',
 
             pluginName: 'security_scanner_nikto',
             api_url: V.build_api_url('integrations', 'integration') + '/',
